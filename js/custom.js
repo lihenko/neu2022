@@ -357,38 +357,6 @@ $(document).ready(function() {
         e.preventDefault();
     }); 
 
-    /*
-    |--------------------------------------------------------------------------
-    | OWL CAROUSEL
-    |--------------------------------------------------------------------------
-    */
-
-    if($('.nekoDataOwl').length){
-
-        $( '.nekoDataOwl' ).each(function( index ) {
-
-            $(this).owlCarousel(
-            {
-                items:$(this).data('neko_items'),
-                navigation:$(this).data('neko_navigation'),
-                singleItem:$(this).data('neko_singleitem'),
-                autoPlay:$(this).data('neko_autoplay'),
-                itemsScaleUp:$(this).data('neko_itemsscaleup'),
-                navigationText:['<i class="icon-left-open"></i>','<i class="icon-right-open"></i>'], 
-                pagination:$(this).data('neko_pagination'),
-                paginationNumbers:$(this).data('neko_paginationnumbers'),
-                autoHeight:$(this).data('neko_autoheight'),
-                mouseDrag:$(this).data('neko_mousedrag'),
-                transitionStyle:$(this).data('neko_transitionstyle'),
-                responsive:true
-         
-            });
-
-        });
-
-    }
-
-
     
     /*
     |--------------------------------------------------------------------------
@@ -866,20 +834,6 @@ if ($('#html5Video').length){
 
 }
 
-/*
-|--------------------------------------------------------------------------
-| APPEAR
-|--------------------------------------------------------------------------
-*/
-if($('.activateAppearAnimation').length){
-
-	nekoAnimAppear();
-	$('.reloadAnim').click(function (e) {
-		$(this).parent().parent().find('img[data-nekoanim]').attr('class', '').addClass('img-responsive');
-		nekoAnimAppear();
-		e.preventDefault();
-	});
-}
 
 
 
@@ -1016,18 +970,6 @@ $(window).load(function() {
 
 
 
-    if (isDesktop === true && $('section[id^="paralaxSlice"]').length )
-    {
-
-    	$(window).stellar({
-    		horizontalScrolling: false,
-    		responsive:true
-    	});
-    }
-
-
-
-
 
 //END WINDOW LOAD
 });
@@ -1044,36 +986,6 @@ function fullscreenImage(){
 }
 
 
-
-/* Appear function */
-function nekoAnimAppear(){
-	$("[data-nekoanim]").each(function() {
-
-		var $this = $(this);
-
-		$this.addClass("nekoAnim-invisible");
-		
-		if($(window).width() > 767) {
-			
-			$this.appear(function() {
-
-				var delay = ($this.data("nekodelay") ? $this.data("nekodelay") : 1);
-				if(delay > 1) $this.css("animation-delay", delay + "ms");
-
-				$this.addClass("nekoAnim-animated");
-				$this.addClass('nekoAnim-'+$this.data("nekoanim"));
-
-				setTimeout(function() {
-					$this.addClass("nekoAnim-visible");
-				}, delay);
-
-			}, {accX: 0, accY: -150});
-
-		} else {
-			$this.animate({ opacity: 1 }, 300, 'easeInOutQuad',function() { });
-		}
-	});
-}
 
 
 /* Append more link on mosaic profolio */
